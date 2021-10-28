@@ -7,13 +7,18 @@ using System.IO;
 
 namespace Banking_Application
 {
-    class Test
+    class Login
     {
+        #region Attributes
         public List<Customer> customerList { get; set; }
-        public Test()
+        #endregion
+        #region Builder
+        public Login()
         {
             //Console.WriteLine("1");
         }
+        #endregion
+        #region Methods
         public void Log()
         {
             ConsoleKeyInfo cki;
@@ -23,8 +28,10 @@ namespace Banking_Application
                 int select = 0;
                 do
                 {
+                
                     Console.Clear();
-                    Console.WriteLine("Menu :\n"
+                    Console.WriteLine("Menu :                                          BANKING APPLICATION\n"
+                         + "\n"
                          + " 1 : Bank employee \n"
                          + " 2 : Customer \n"
                          + "\n"
@@ -62,6 +69,7 @@ namespace Banking_Application
                                      + " 3 : Add Money \n"
                                      + " 4 : Remove Money \n"
                                      + " 5 : Show list customer with their balance \n"
+                                     + " 6 : Back to menu ! \n"
                                      + "\n"
                                      + " Choose !");
                                 Console.WriteLine("What do you want to do ?");
@@ -98,6 +106,7 @@ namespace Banking_Application
                                         Console.WriteLine();
 
                                         Console.WriteLine("which type of account ");
+                                        Console.WriteLine("saving or current !");
                                         string type = Convert.ToString(Console.ReadLine());
                                         Console.WriteLine("How much Money ? ");
                                         double Money = Convert.ToDouble(Console.ReadLine());
@@ -113,6 +122,7 @@ namespace Banking_Application
                                         Console.WriteLine();
 
                                         Console.WriteLine("which type of account ");
+                                        Console.WriteLine("saving or current !");
                                         type = Convert.ToString(Console.ReadLine());
                                         Console.WriteLine("How much Money ? ");
                                         Money = Convert.ToDouble(Console.ReadLine());
@@ -121,13 +131,17 @@ namespace Banking_Application
                                     case 5:
                                         CustomerList();
                                         break;
+                                    case 6:
+                                        goto telep;                                                                               
                                     default:
                                         break;
                                 }
+                                
                             }
-
+                        
                         }
                         else Console.WriteLine("Please start again kk ! Pay attention to the capital letter !");
+                        telep:;
                         break;
 
                     case 2:
@@ -144,6 +158,7 @@ namespace Banking_Application
                                      + " 1 : Add money \n"
                                      + " 2 : retreve money \n"
                                      + " 3 : Check transaction \n"
+                                     + " 4 : Back to menu \n"
                                      + "\n"
                                      + " Choose !");
                                 Console.WriteLine("What do you want to do ?");
@@ -174,6 +189,7 @@ namespace Banking_Application
                                         Console.WriteLine();
 
                                         Console.WriteLine("which type of account ? ");
+                                        Console.WriteLine("saving or current !");
                                         string type = Convert.ToString(Console.ReadLine());
                                         Console.WriteLine("How much Money ? ");
                                         double Money = Convert.ToDouble(Console.ReadLine());
@@ -189,6 +205,7 @@ namespace Banking_Application
                                         Console.WriteLine();
 
                                         Console.WriteLine("which type of account ? ");
+                                        Console.WriteLine("saving or current !");
                                         type = Convert.ToString(Console.ReadLine());
                                         Console.WriteLine("How much Money ? ");
                                         Money = Convert.ToDouble(Console.ReadLine());
@@ -204,14 +221,19 @@ namespace Banking_Application
                                         Console.WriteLine();
 
                                         Console.WriteLine("which type of account do you want to see transaction ?");
+                                        Console.WriteLine("saving or current !");
                                         type = Convert.ToString(Console.ReadLine());
 
                                         acc3.Transaction(type);
                                         break;
+
+                                    case 4:
+                                        goto telep2;            
                                     default:
                                         break;
                                 }
-                            }
+                            }                           
+                            telep2:;
                         }
                         break;
                     default:
@@ -223,10 +245,9 @@ namespace Banking_Application
             } while (cki.Key != ConsoleKey.Escape);
             Console.Read();
         }
-
         public bool Verif()
         {
-            List<string> aze = new List<string>(File.ReadAllLines("c:/users/Lukas/downloads/customers.txt"));
+            List<string> aze = new List<string>(File.ReadAllLines(".\\customers.txt"));      // We convert your file into a list of strings to be able to manipulate it. A line in the file corresponds to an element of our list
 
             Console.WriteLine("Write Your First Name");
             string stName = Console.ReadLine();
@@ -239,7 +260,7 @@ namespace Banking_Application
 
             string truetrueName = trueName + ":" + cust.File;
 
-            bool result = aze.Contains(truetrueName);
+            bool result = aze.Contains(truetrueName);                                    // we are looking for the item in our list
 
             if (result == true)
             {
@@ -247,10 +268,9 @@ namespace Banking_Application
             }
             return result;
         }
-
         public void Removecust()
         {
-            List<string> aze = new List<string>(File.ReadAllLines("c:/users/Lukas/downloads/customers.txt"));
+            List<string> aze = new List<string>(File.ReadAllLines(".\\customers.txt"));
 
             Console.WriteLine("Write Your First Name");
             string stName = Console.ReadLine();
@@ -268,14 +288,10 @@ namespace Banking_Application
             {
                 Console.WriteLine(" The person will be deleted from the list !");
                 aze.Remove(Tname);
-                File.WriteAllLines("c:/users/Lukas/downloads/customers.txt",aze.ToArray());
+                File.WriteAllLines(".\\customers.txt",aze.ToArray());                                 //we rewrite the file via the list with one less client
             }
             else Console.WriteLine("The person is not on the list");
         }
-
-
-
-
         public void CreateObjects()
         {
 
@@ -287,13 +303,13 @@ namespace Banking_Application
             Customer cust = new Customer(stName, ndName);
             string name = cust.Name;
 
-            string path = "c:/users/Lukas/downloads/customers.txt";
+            string path = ".\\customers.txt";
 
-            string saving = $"c:/users/Lukas/downloads/transaction/{cust.File}-saving.txt";
+            string saving = $".\\transaction/{cust.File}-saving.txt";
 
-            string current = $"c:/users/Lukas/downloads/transaction/{cust.File}-current.txt";
+            string current = $".\\transaction/{cust.File}-current.txt";
 
-            using (StreamWriter sw = File.AppendText(path))
+            using (StreamWriter sw = File.AppendText(path))                            
             {
                 sw.WriteLine(name + ":" + cust.File);
             }
@@ -309,10 +325,9 @@ namespace Banking_Application
             }
          
         }
-
         public void CustomerList()
         {          
-            string path = "c:/users/Lukas/downloads/customers.txt";
+            string path = ".\\customers.txt";
             
             try
             {
@@ -349,15 +364,18 @@ namespace Banking_Application
             Console.WriteLine("=".PadRight(80, '='));
 
             Accounts acc = new Accounts(stName, ndName);
+            Console.WriteLine("                                 Saving                       ");
             acc.Transaction("saving");
             Console.WriteLine();
             Console.WriteLine("=".PadRight(80, '='));
 
             Accounts acc2 = new Accounts(stName, ndName);
+            Console.WriteLine("                                 Current                      ");
             acc2.Transaction("current");
             Console.WriteLine();
             Console.WriteLine("=".PadRight(80, '='));
             Console.ReadKey();
         }
+        #endregion
     }
 }

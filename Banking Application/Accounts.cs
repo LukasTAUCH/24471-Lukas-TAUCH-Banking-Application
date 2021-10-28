@@ -17,6 +17,7 @@ namespace Banking_Application
         public string Fname { get; set; }
         public string Lname { get; set; }
         #endregion
+        #region Builder
         public Accounts()
         {
 
@@ -26,15 +27,16 @@ namespace Banking_Application
             this.Fname = _Fname;
             this.Lname = _Lname;
         }
+        #endregion
         #region Methods
         public void AddMoney(string type, double Money)
         {   
             Customer cust = new Customer(Fname,Lname);         
-            string path = $"c:/users/Lukas/downloads/transaction/{cust.File}-{type}.txt";
+            string path = $".\\transaction/{cust.File}-{type}.txt";
             string addMoney = Convert.ToString(BalanceNow(type) + Money);
             using (StreamWriter sw = File.AppendText(path))
             {
-                sw.WriteLine($"{DateTime.Now.ToString("dd-MM-yyyy")}\tLodgement\t{Money}\t{addMoney}");
+                sw.WriteLine($"{DateTime.Now.ToString("dd-MM-yyyy")}\tLodgement\t{Money}\t{addMoney}");          //We write the line with the new modifications
             }
         }
 
@@ -42,18 +44,18 @@ namespace Banking_Application
         {
             Customer cust = new Customer(Fname, Lname);
 
-            string path = $"c:/users/Lukas/downloads/transaction/{cust.File}-{type}.txt";
-            string endbalance = File.ReadLines(path).Last();
-            string[] endbalance2 = endbalance.Split('\t');
-            double endbalance3 = Convert.ToDouble(endbalance2[3]);
+            string path = $".\\transaction/{cust.File}-{type}.txt";
+            string endbalance = File.ReadLines(path).Last();                             // We look at the last line of the file
+            string[] endbalance2 = endbalance.Split('\t');                               //Tabulation is no longer taken into account
+            double endbalance3 = Convert.ToDouble(endbalance2[3]);                       //We come to look at the scale, which is the element furthest to the right
             return endbalance3;
         }
 
         public void RemoveMoney(string type, double Money)
         {
             Customer cust = new Customer(Fname, Lname);
-            string path = $"c:/users/Lukas/downloads/transaction/{cust.File}-{type}.txt";
-            if (Money < BalanceNow(type))
+            string path = $".\\transaction/{cust.File}-{type}.txt";
+            if (Money < BalanceNow(type))                                              //We see if we have more money than the amount we want to withdraw
             {
                 string RemoveMoney = Convert.ToString(BalanceNow(type) - Money);
                 using (StreamWriter sw = File.AppendText(path))
@@ -66,11 +68,14 @@ namespace Banking_Application
                 Console.WriteLine("No enought money");
             } 
         }
-
+        /// <summary>
+        /// Method that reads transaction files
+        /// </summary>
+        /// <param name="type"></param>
         public void Transaction(string type)
         {
             Customer cust = new Customer(Fname, Lname);
-            string path = $"c:/users/Lukas/downloads/transaction/{cust.File}-{type}.txt";
+            string path = $".\\transaction/{cust.File}-{type}.txt";
             try
             {
                 using (StreamReader sr = new StreamReader(path))
@@ -91,6 +96,5 @@ namespace Banking_Application
         }
 
         #endregion
-
     }
 }

@@ -10,14 +10,15 @@ namespace Banking_Application
     {
         static void Main(string[] args)
         {
-            Test driver = new Test();
+            Login driver = new Login();
+            driver.Log();
+
+
             //driver.CreateObjects();
-            driver.Log();          
             //driver.Removecust();
             //driver.Verif();
             //driver.Verif();
             Console.ReadKey();
-
         }
     }
 }

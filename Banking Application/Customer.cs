@@ -64,9 +64,11 @@ namespace Banking_Application
             this.Pin = Convert.ToInt32(Pos11 + Pos12);                                                        // Pin code
         }
         #endregion
+        #region Methods
         public override string ToString()
         {
             return $"je suis le client {FirstName} {LastName}";
         }
+        #endregion
     }
 }
