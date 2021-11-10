@@ -6,18 +6,28 @@ using System.Threading.Tasks;
 
 namespace Banking_Application
 {
-    //class SavingAccounts : Accounts
-    //{
-    //  Account.Add.money(saving, Money);
-    //  Account.BalanceNow(saving);
-    //  Account.RemoveMoney(saving, Money);
-    //  Account.Transaction(saving);
-    //}
-    //class CurrentAccount : Accounts
-    //{
-    //  Account.Add.money(current, Money);
-    //  Account.BalanceNow(current);
-    //  Account.RemoveMoney(current, Money);
-    //  Account.Transaction(current);
-    //}
+    class SavingAccounts : Accounts // Inheritance
+    {
+        public SavingAccounts()
+        {
+
+        }
+        public SavingAccounts(string _Fname, string _Lname) : base(_Fname, _Lname)     // The "Savingaccount" class inherits from the constructor of the "account" parent class
+        {
+
+
+        }
+    }
+    class CurrentAccount : Accounts
+    {
+        public CurrentAccount()
+        {
+
+        }
+
+        public CurrentAccount(string _Fname, string _Lname) : base(_Fname, _Lname)
+        {
+
+        }
+    }
 }

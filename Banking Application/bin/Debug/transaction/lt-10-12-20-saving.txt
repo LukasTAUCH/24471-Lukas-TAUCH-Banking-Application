@@ -1,2 +1,6 @@
 28-10-2021	Lodgement	0	0
 28-10-2021	Lodgement	50	50
+10-11-2021	Lodgement	5000	5050
+10-11-2021	Lodgement	5000	10050
+10-11-2021	Lodgement	85	10135
+10-11-2021	Lodgement	78	10213

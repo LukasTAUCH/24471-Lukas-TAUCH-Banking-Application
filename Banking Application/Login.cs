@@ -28,9 +28,9 @@ namespace Banking_Application
                 int select = 0;
                 do
                 {
-                
+
                     Console.Clear();
-                    Console.WriteLine("Menu :                                          BANKING APPLICATION\n"
+                    Console.WriteLine("                                                BANKING APPLICATION\n"
                          + "\n"
                          + " 1 : Bank employee \n"
                          + " 2 : Customer \n"
@@ -53,7 +53,7 @@ namespace Banking_Application
                 switch (select)
                 {
                     case 1:
-                        Console.WriteLine("If you really are an employee please enter the code.");
+                        Console.WriteLine("\nIf you really are an employee please enter the code.");
                         string pin = Convert.ToString(Console.ReadLine());
                         if (pin == "A1234")
                         {
@@ -63,7 +63,7 @@ namespace Banking_Application
                             while (true)
                             {
                                 Console.Clear();
-                                Console.WriteLine("What do you want to do ? :\n"
+                                Console.WriteLine("\nWhat do you want to do ? :\n"
                                      + " 1 : Add Customer \n"
                                      + " 2 : Delete Customer \n"
                                      + " 3 : Add Money \n"
@@ -85,7 +85,7 @@ namespace Banking_Application
                                     catch
                                     {
                                         f = false;
-                                        Console.WriteLine("Veuillez recommencer !");
+                                        Console.WriteLine("Try again !");
                                     }
                                 }
                                 switch (godmode)
@@ -97,56 +97,87 @@ namespace Banking_Application
                                         Removecust();
                                         break;
                                     case 3:
-                                        Console.WriteLine("Write the First name of the customer ");
+                                        Console.WriteLine("\nWrite the First name of the customer ");
                                         string stName = Convert.ToString(Console.ReadLine());
-                                        Console.WriteLine("Write the Last name of the customer ");
+                                        Console.WriteLine("\nWrite the Last name of the customer ");
                                         string ndName = Convert.ToString(Console.ReadLine());
-                                        Accounts acc = new Accounts(stName, ndName);
 
+                                        Console.WriteLine("\nwhich type of account \n"
+                                             + "\n"
+                                             + " 1 : Saving account \n"
+                                             + " 2 : Current account \n"
+                                             + "\n"
+                                             + "Select the right one ");
                                         Console.WriteLine();
+                                        int type = Convert.ToInt32(Console.ReadLine());
 
-                                        Console.WriteLine("which type of account ");
-                                        Console.WriteLine("saving or current !");
-                                        string type = Convert.ToString(Console.ReadLine());
-                                        Console.WriteLine("How much Money ? ");
-                                        double Money = Convert.ToDouble(Console.ReadLine());
-                                        acc.AddMoney(type, Money);
+                                        if (type == 1)
+                                        {
+                                            SavingAccounts sav = new SavingAccounts(stName, ndName);
+                                            Console.WriteLine("\nHow much Money ? ");
+                                            double Money = Convert.ToDouble(Console.ReadLine());
+                                            sav.AddMoney("saving", Money);
+                                        }
+                                        else if (type == 2)
+                                        {
+                                            CurrentAccount cur = new CurrentAccount(stName, ndName);
+                                            Console.WriteLine("\nHow much Money ? ");
+                                            double Money = Convert.ToDouble(Console.ReadLine());
+                                            cur.AddMoney("current", Money);
+                                        }
+                                        else Console.WriteLine("\nChoose Saving or Current account !");
+
                                         break;
                                     case 4:
-                                        Console.WriteLine("Write the First name of the customer ");
+                                        Console.WriteLine("\nWrite the First name of the customer ");
                                         stName = Convert.ToString(Console.ReadLine());
-                                        Console.WriteLine("Write the Last name of the customer ");
+                                        Console.WriteLine("\nWrite the Last name of the customer ");
                                         ndName = Convert.ToString(Console.ReadLine());
-                                        Accounts acc2 = new Accounts(stName, ndName);
 
+                                        Console.WriteLine("\nwhich type of account \n"
+                                             + "\n"
+                                             + " 1 : Saving account \n"
+                                             + " 2 : Current account \n"
+                                             + "\n"
+                                             + "Select the right one ");
                                         Console.WriteLine();
+                                        type = Convert.ToInt32(Console.ReadLine());
 
-                                        Console.WriteLine("which type of account ");
-                                        Console.WriteLine("saving or current !");
-                                        type = Convert.ToString(Console.ReadLine());
-                                        Console.WriteLine("How much Money ? ");
-                                        Money = Convert.ToDouble(Console.ReadLine());
-                                        acc2.RemoveMoney(type, Money);
+                                        if (type == 1)
+                                        {
+                                            SavingAccounts sav = new SavingAccounts(stName, ndName);
+                                            Console.WriteLine("\nHow much Money ? ");
+                                            double Money = Convert.ToDouble(Console.ReadLine());
+                                            sav.RemoveMoney("saving", Money);
+                                        }
+                                        else if (type == 2)
+                                        {
+                                            CurrentAccount cur = new CurrentAccount(stName, ndName);
+                                            Console.WriteLine("\nHow much Money ? ");
+                                            double Money = Convert.ToDouble(Console.ReadLine());
+                                            cur.RemoveMoney("current", Money);
+                                        }
+                                        else Console.WriteLine("\nChoose Saving or Current account !");
                                         break;
                                     case 5:
                                         CustomerList();
                                         break;
                                     case 6:
-                                        goto telep;                                                                               
+                                        goto telep;
                                     default:
                                         break;
                                 }
-                                
+
                             }
-                        
+
                         }
-                        else Console.WriteLine("Please start again kk ! Pay attention to the capital letter !");
+                        else Console.WriteLine("\nPlease start again kk ! Pay attention to the capital letter !");
                         telep:;
                         break;
 
                     case 2:
-                        Console.WriteLine(" Please write your First Name and Name ! ");
-                        if ( Verif() == true)
+                        Console.WriteLine(" \nHello ! ");
+                        if (Verif() == true)
                         {
                             bool h = false;
                             int noob = 0;
@@ -154,14 +185,14 @@ namespace Banking_Application
                             while (true)
                             {
                                 Console.Clear();
-                                Console.WriteLine("What do you want to do ? :\n"
+                                Console.WriteLine("\nWhat do you want to do ? :\n"
                                      + " 1 : Add money \n"
-                                     + " 2 : retreve money \n"
+                                     + " 2 : Remove money \n"
                                      + " 3 : Check transaction \n"
                                      + " 4 : Back to menu \n"
                                      + "\n"
                                      + " Choose !");
-                                Console.WriteLine("What do you want to do ?");
+                                Console.WriteLine("\nWhat do you want to do ?");
 
                                 h = false;
                                 while (h == false)
@@ -174,66 +205,102 @@ namespace Banking_Application
                                     catch
                                     {
                                         h = false;
-                                        Console.WriteLine("Veuillez recommencer !");
+                                        Console.WriteLine(" Try again !");
                                     }
                                 }
                                 switch (noob)
                                 {
                                     case 1:
-                                        Console.WriteLine("Can you rewrite your First name ");
+                                        Console.WriteLine("\nCan you rewrite your First name ");
                                         string stName = Convert.ToString(Console.ReadLine());
-                                        Console.WriteLine("Can you rewrite your Last name ");
+                                        Console.WriteLine("\nCan you rewrite your Last name ");
                                         string ndName = Convert.ToString(Console.ReadLine());
-                                        Accounts acc = new Accounts(stName, ndName);
 
+                                        Console.WriteLine("\nwhich type of account \n"
+                                            + "\n"
+                                            + " 1 : Saving account \n"
+                                            + " 2 : Current account \n"
+                                            + "\n"
+                                            + "Select the right one ");
                                         Console.WriteLine();
+                                        int type = Convert.ToInt32(Console.ReadLine());
 
-                                        Console.WriteLine("which type of account ? ");
-                                        Console.WriteLine("saving or current !");
-                                        string type = Convert.ToString(Console.ReadLine());
-                                        Console.WriteLine("How much Money ? ");
-                                        double Money = Convert.ToDouble(Console.ReadLine());
-                                        acc.AddMoney(type, Money);
+                                        if (type == 1)
+                                        {
+                                            SavingAccounts sav = new SavingAccounts(stName, ndName);
+                                            Console.WriteLine("\nHow much Money ? ");
+                                            double Money = Convert.ToDouble(Console.ReadLine());
+                                            sav.AddMoney("saving", Money);
+                                        }
+                                        else if (type == 2)
+                                        {
+                                            CurrentAccount cur = new CurrentAccount(stName, ndName);
+                                            Console.WriteLine("\nHow much Money ? ");
+                                            double Money = Convert.ToDouble(Console.ReadLine());
+                                            cur.AddMoney("current", Money);
+                                        }
+                                        else Console.WriteLine("\nChoose Saving or Current account !");
+                                        
                                         break;
                                     case 2:
-                                        Console.WriteLine("Can you rewrite your First name ");
+                                        Console.WriteLine("\nCan you rewrite your First name ");
                                         stName = Convert.ToString(Console.ReadLine());
-                                        Console.WriteLine("Can you rewrite your Last name ");
+                                        Console.WriteLine("\nCan you rewrite your Last name ");
                                         ndName = Convert.ToString(Console.ReadLine());
-                                        Accounts acc2 = new Accounts(stName, ndName);
 
+                                        Console.WriteLine("\nwhich type of account \n"
+                                           + "\n"
+                                           + " 1 : Saving account \n"
+                                           + " 2 : Current account \n"
+                                           + "\n"
+                                           + "Select the right one ");
                                         Console.WriteLine();
+                                         type = Convert.ToInt32(Console.ReadLine());
 
-                                        Console.WriteLine("which type of account ? ");
-                                        Console.WriteLine("saving or current !");
-                                        type = Convert.ToString(Console.ReadLine());
-                                        Console.WriteLine("How much Money ? ");
-                                        Money = Convert.ToDouble(Console.ReadLine());
-                                        acc2.RemoveMoney(type, Money);
+                                        if (type == 1)
+                                        {
+                                            SavingAccounts sav = new SavingAccounts(stName, ndName);
+                                            Console.WriteLine("\nHow much Money ? ");
+                                            double Money = Convert.ToDouble(Console.ReadLine());
+                                            sav.RemoveMoney("saving", Money);
+                                        }
+                                        else if (type == 2)
+                                        {
+                                            CurrentAccount cur = new CurrentAccount(stName, ndName);
+                                            Console.WriteLine("\nHow much Money ? ");
+                                            double Money = Convert.ToDouble(Console.ReadLine());
+                                            cur.RemoveMoney("current", Money);
+                                        }
+                                        else Console.WriteLine("\nChoose Saving or Current account !");  
+                                        
                                         break;
                                     case 3:
-                                        Console.WriteLine("Can you rewrite your First name ");
+                                        Console.WriteLine("\nCan you rewrite your First name ");
                                         stName = Convert.ToString(Console.ReadLine());
-                                        Console.WriteLine("Can you rewrite your Last name ");
+                                        Console.WriteLine("\nCan you rewrite your Last name ");
                                         ndName = Convert.ToString(Console.ReadLine());
-                                        Accounts acc3 = new Accounts(stName, ndName);
 
+                                        Console.WriteLine("                               \nSaving                       ");
+                                        SavingAccounts sav2 = new SavingAccounts(stName, ndName);
+                                            sav2.Transaction("saving");
                                         Console.WriteLine();
+                                        Console.WriteLine("=".PadRight(80, '='));
 
-                                        Console.WriteLine("which type of account do you want to see transaction ?");
-                                        Console.WriteLine("saving or current !");
-                                        type = Convert.ToString(Console.ReadLine());
+                                        Console.WriteLine("                                \nCurrent                      ");
+                                        CurrentAccount cur2 = new CurrentAccount(stName, ndName);
+                                            cur2.Transaction("current");
+                                        Console.WriteLine();
+                                        Console.WriteLine("=".PadRight(80, '='));
 
-                                        acc3.Transaction(type);
                                         break;
 
                                     case 4:
-                                        goto telep2;            
+                                        goto telep2;
                                     default:
                                         break;
                                 }
-                            }                           
-                            telep2:;
+                            }
+                        telep2:;
                         }
                         break;
                     default:
@@ -245,6 +312,7 @@ namespace Banking_Application
             } while (cki.Key != ConsoleKey.Escape);
             Console.Read();
         }
+
         public bool Verif()
         {
             List<string> aze = new List<string>(File.ReadAllLines(".\\customers.txt"));      // We convert your file into a list of strings to be able to manipulate it. A line in the file corresponds to an element of our list
@@ -264,7 +332,7 @@ namespace Banking_Application
 
             if (result == true)
             {
-                Console.WriteLine("you are in our bank !");            
+                Console.WriteLine("you are in our bank !");
             }
             return result;
         }
@@ -288,7 +356,7 @@ namespace Banking_Application
             {
                 Console.WriteLine(" The person will be deleted from the list !");
                 aze.Remove(Tname);
-                File.WriteAllLines(".\\customers.txt",aze.ToArray());                                 //we rewrite the file via the list with one less client
+                File.WriteAllLines(".\\customers.txt", aze.ToArray());                                 //we rewrite the file via the list with one less client
             }
             else Console.WriteLine("The person is not on the list");
         }
@@ -309,7 +377,7 @@ namespace Banking_Application
 
             string current = $".\\transaction/{cust.File}-current.txt";
 
-            using (StreamWriter sw = File.AppendText(path))                            
+            using (StreamWriter sw = File.AppendText(path))
             {
                 sw.WriteLine(name + ":" + cust.File);
             }
@@ -323,12 +391,12 @@ namespace Banking_Application
             {
                 sw.WriteLine($"{DateTime.Now.ToString("dd-MM-yyyy")}\tLodgement\t0\t0");
             }
-         
+
         }
         public void CustomerList()
-        {          
+        {
             string path = ".\\customers.txt";
-            
+
             try
             {
                 using (StreamReader sr = new StreamReader(path))
@@ -357,25 +425,26 @@ namespace Banking_Application
 
             Customer cust = new Customer(stName, ndName);
 
-            
+
 
 
             Console.WriteLine();
             Console.WriteLine("=".PadRight(80, '='));
 
-            Accounts acc = new Accounts(stName, ndName);
+            SavingAccounts sav = new SavingAccounts(stName, ndName);
             Console.WriteLine("                                 Saving                       ");
-            acc.Transaction("saving");
+            sav.Transaction("saving");
             Console.WriteLine();
             Console.WriteLine("=".PadRight(80, '='));
 
-            Accounts acc2 = new Accounts(stName, ndName);
+            CurrentAccount cur = new CurrentAccount(stName, ndName);
             Console.WriteLine("                                 Current                      ");
-            acc2.Transaction("current");
+            cur.Transaction("current");
             Console.WriteLine();
             Console.WriteLine("=".PadRight(80, '='));
             Console.ReadKey();
         }
+
         #endregion
     }
 }

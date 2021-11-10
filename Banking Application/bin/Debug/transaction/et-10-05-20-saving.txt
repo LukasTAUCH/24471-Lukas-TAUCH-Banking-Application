@@ -1,0 +1,5 @@
+10-11-2021	Lodgement	0	0
+10-11-2021	Lodgement	50	50
+10-11-2021	Withdrawal	20	30
+10-11-2021	Lodgement	80	110
+10-11-2021	Withdrawal	30	80

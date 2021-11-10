@@ -5,3 +5,10 @@ C:\Users\lukas\Documents\ESILV\ESILV A3 2021 2022\Cours\POO\Banking Application\
 C:\Users\lukas\Documents\ESILV\ESILV A3 2021 2022\Cours\POO\Banking Application\Banking Application\obj\Debug\Banking Application.csproj.CoreCompileInputs.cache
 C:\Users\lukas\Documents\ESILV\ESILV A3 2021 2022\Cours\POO\Banking Application\Banking Application\obj\Debug\Banking Application.exe
 C:\Users\lukas\Documents\ESILV\ESILV A3 2021 2022\Cours\POO\Banking Application\Banking Application\obj\Debug\Banking Application.pdb
+C:\Users\lukas\Documents\ESILV\ESILV A3 2021 2022\Cours\POO\Banking Application - Copie\Banking Application\bin\Debug\Banking Application.exe.config
+C:\Users\lukas\Documents\ESILV\ESILV A3 2021 2022\Cours\POO\Banking Application - Copie\Banking Application\bin\Debug\Banking Application.exe
+C:\Users\lukas\Documents\ESILV\ESILV A3 2021 2022\Cours\POO\Banking Application - Copie\Banking Application\bin\Debug\Banking Application.pdb
+C:\Users\lukas\Documents\ESILV\ESILV A3 2021 2022\Cours\POO\Banking Application - Copie\Banking Application\obj\Debug\Banking Application.csproj.AssemblyReference.cache
+C:\Users\lukas\Documents\ESILV\ESILV A3 2021 2022\Cours\POO\Banking Application - Copie\Banking Application\obj\Debug\Banking Application.csproj.CoreCompileInputs.cache
+C:\Users\lukas\Documents\ESILV\ESILV A3 2021 2022\Cours\POO\Banking Application - Copie\Banking Application\obj\Debug\Banking Application.exe
+C:\Users\lukas\Documents\ESILV\ESILV A3 2021 2022\Cours\POO\Banking Application - Copie\Banking Application\obj\Debug\Banking Application.pdb

@@ -7,7 +7,7 @@ using System.IO;
 
 namespace Banking_Application
 {
-    class Accounts
+    public abstract class Accounts    // Class abstract : The "Saving account" and "Current account" classes have the same methods so we will make them inherit the methods via this parent class.
     {
         #region Attributes
         public int Balance { get; set; }
